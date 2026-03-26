@@ -92,6 +92,7 @@ ansible_password=yourwindowsuserpassword
 ansible_connection=winrm
 ansible_winrm_transport=basic
 ansible_port=5985
+ansible_become=no
 ```
 For HTTPS + certificate auth, you’d use ansible_winrm_transport=credssp or kerberos instead.
 
