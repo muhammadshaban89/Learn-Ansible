@@ -53,6 +53,10 @@ Port 5986 = HTTPS (needs certificate setup)
 New-LocalUser -Name "ansibleu" -Password (Read-Host -AsSecureString "Enter Password") -FullName "Ansible Automation User" -Description "User for Ansible automation"
 
 Add-LocalGroupMember -Group "Administrators" -Member "ansibleu"
+
+OR
+
+net localgroup Administrators ansibleu /add
 ```
 ---
 
