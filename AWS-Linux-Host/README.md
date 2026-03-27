@@ -48,12 +48,20 @@ sudo usermod -aG sudo ansible    # Ubuntu
 - Configure **SSH key-based login**:
   ```bash
   sudo mkdir /home/ansibleu/.ssh
-  sudo cp ~/.ssh/authorized_keys /home/ansibleu/.ssh/
   sudo chown -R ansibleu:ansibleu /home/ansibleu/.ssh
   sudo chmod 700 /home/ansibleu/.ssh
+  sudo touch authorized_keys
   sudo chmod 600 /home/ansibleu/.ssh/authorized_keys
   ```
+- on your control Node create  **SSH key**:
+```
+ssh-keygen -t rsa -b 4096 -f ~/.ssh/mykey
+```
+This creates:
+• 	 (private key)
+• 	 (public key)
 
+copy `mykey.pub` to `authorized_keys` in `/home/ansibleu/.ssh/authorized_keys` in your EC2-instance.
 ---
 
 ### 5. Enable Passwordless Sudo
@@ -70,10 +78,11 @@ ansibleu ALL=(ALL) NOPASSWD:ALL
 
 ### 6. Configure Ansible Control Node
 On your **Ansible control machine** (could be your laptop or another server):
+
 - Create inventory file:
   ```ini
   [aws_hosts]
-  aws1 ansible_host=<EC2_PUBLIC_IP> ansible_user=ansibleu ansible_ssh_private_key_file=~/.ssh/mykey.pem
+  aws1 ansible_host=<EC2_PUBLIC_IP> ansible_user=ansibleu ansible_ssh_private_key_file=~/.ssh/mykey
   ```
 - Test connectivity:
   ```bash
@@ -102,3 +111,4 @@ aws1 | SUCCESS => {
 Thanks:
 
 👉Follow my LinkdIn Profile: www.linkedin.com/in/muhammad-shaban-45577719a
+👉Youtube Channel: http://www.youtube.com/@engrm.shaban5099
