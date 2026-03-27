@@ -48,10 +48,10 @@ sudo usermod -aG sudo ansible    # Ubuntu
 - Configure **SSH key-based login**:
   ```bash
   sudo mkdir /home/ansibleu/.ssh
-  sudo cp ~/.ssh/authorized_keys /home/ansible/.ssh/
-  sudo chown -R ansible:ansible /home/ansibleu/.ssh
-  sudo chmod 700 /home/ansible/.ssh
-  sudo chmod 600 /home/ansible/.ssh/authorized_keys
+  sudo cp ~/.ssh/authorized_keys /home/ansibleu/.ssh/
+  sudo chown -R ansibleu:ansibleu /home/ansibleu/.ssh
+  sudo chmod 700 /home/ansibleu/.ssh
+  sudo chmod 600 /home/ansibleu/.ssh/authorized_keys
   ```
 
 ---
@@ -63,7 +63,7 @@ sudo visudo
 ```
 Add:
 ```
-ansible ALL=(ALL) NOPASSWD:ALL
+ansibleu ALL=(ALL) NOPASSWD:ALL
 ```
 
 ---
@@ -73,7 +73,7 @@ On your **Ansible control machine** (could be your laptop or another server):
 - Create inventory file:
   ```ini
   [aws_hosts]
-  aws1 ansible_host=<EC2_PUBLIC_IP> ansible_user=ansible ansible_ssh_private_key_file=~/.ssh/mykey.pem
+  aws1 ansible_host=<EC2_PUBLIC_IP> ansible_user=ansibleu ansible_ssh_private_key_file=~/.ssh/mykey.pem
   ```
 - Test connectivity:
   ```bash
