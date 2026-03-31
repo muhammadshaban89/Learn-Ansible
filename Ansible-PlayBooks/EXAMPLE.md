@@ -93,6 +93,3 @@ Since you’re automating **repo setups and Windows onboarding**, you can combin
 - Install required packages (`yum`/`dnf`).  
 - Configure services (`service` module).  
 - Add users (`user` module).  
-
-
-Would you like me to draft a **ready-to-run playbook** that sets up a CentOS repo from a DVD source (BaseOS + AppStream), installs a package, and validates it — all in one file? That would directly align with your repo automation project.
