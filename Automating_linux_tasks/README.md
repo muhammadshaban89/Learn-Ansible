@@ -214,7 +214,7 @@ A structured breakdown of the **most common Linux admin tasks** and how to autom
 
 ---
 
-# 12. **Full Automation Example (Your Style)**
+# 12. **Full Automation Example**
 Here’s a combined playbook automating multiple admin tasks:
 
 ```yaml
